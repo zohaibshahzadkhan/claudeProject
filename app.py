@@ -16,6 +16,40 @@ NAME_MAX_LENGTH = 100
 EMAIL_MAX_LENGTH = 254
 PASSWORD_MIN_LENGTH = 8
 
+# Hardcoded profile-page data (Step 4). Replaced by database queries in Step 5.
+PROFILE_USER = {
+    "name": "Demo User",
+    "email": "demo@spendly.com",
+    "initials": "DU",
+    "member_since": "January 2026",
+}
+
+PROFILE_STATS = {
+    "total_spent": 9210.00,
+    "transaction_count": 7,
+    "top_category": "Shopping",
+    "avg_per_transaction": 1315.71,
+}
+
+PROFILE_TRANSACTIONS = [
+    {"date": "2026-11-15", "description": "Lunch with colleagues", "category": "Food", "amount": 420.00},
+    {"date": "2026-11-14", "description": "Metro card recharge", "category": "Transport", "amount": 500.00},
+    {"date": "2026-11-12", "description": "Electricity bill", "category": "Bills", "amount": 1850.00},
+    {"date": "2026-11-10", "description": "Pharmacy", "category": "Health", "amount": 310.00},
+    {"date": "2026-11-08", "description": "Movie tickets", "category": "Entertainment", "amount": 650.00},
+    {"date": "2026-11-05", "description": "Weekly groceries", "category": "Food", "amount": 2280.00},
+    {"date": "2026-11-03", "description": "Running shoes", "category": "Shopping", "amount": 3200.00},
+]
+
+PROFILE_CATEGORIES = [
+    {"name": "Shopping", "total": 3200.00},
+    {"name": "Food", "total": 2700.00},
+    {"name": "Bills", "total": 1850.00},
+    {"name": "Entertainment", "total": 650.00},
+    {"name": "Transport", "total": 500.00},
+    {"name": "Health", "total": 310.00},
+]
+
 
 def validate_registration(name, email, password, confirm_password):
     """Return an error message for invalid registration input, or None if valid."""
@@ -110,7 +144,15 @@ def logout():
 
 @app.route("/profile")
 def profile():
-    return "Profile page — coming in Step 4"
+    if not session.get("user_id"):
+        return redirect(url_for("login"))
+    return render_template(
+        "profile.html",
+        user=PROFILE_USER,
+        stats=PROFILE_STATS,
+        transactions=PROFILE_TRANSACTIONS,
+        categories=PROFILE_CATEGORIES,
+    )
 
 
 @app.route("/expenses/add")
