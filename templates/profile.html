@@ -19,6 +19,26 @@
             </div>
         </header>
 
+        <section class="profile-card profile-filter-card">
+            <form method="get" action="{{ url_for('profile') }}" class="profile-filter">
+                <div class="profile-filter-field">
+                    <label for="start_date">From</label>
+                    <input type="date" id="start_date" name="start_date" value="{{ start_date or '' }}">
+                </div>
+                <div class="profile-filter-field">
+                    <label for="end_date">To</label>
+                    <input type="date" id="end_date" name="end_date" value="{{ end_date or '' }}">
+                </div>
+                <div class="profile-filter-actions">
+                    <button type="submit" class="btn-primary">Apply</button>
+                    {% if filter_active %}
+                    <a class="btn-ghost" href="{{ url_for('profile') }}">Clear</a>
+                    {% endif %}
+                </div>
+            </form>
+            <p class="profile-range-label">{{ range_label }}</p>
+        </section>
+
         <div class="profile-stats">
             <div class="profile-card profile-stat">
                 <span class="profile-stat-label">Total spent</span>
@@ -61,7 +81,7 @@
                             </tr>
                             {% else %}
                             <tr>
-                                <td colspan="4" class="profile-empty">No transactions yet</td>
+                                <td colspan="4" class="profile-empty">{% if filter_active %}No transactions in this period{% else %}No transactions yet{% endif %}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -78,10 +98,10 @@
                             <span class="profile-badge profile-badge--{{ cat.name|lower }}">{{ cat.name }}</span>
                             <span class="num">₹{{ "%.2f"|format(cat.amount) }}</span>
                         </div>
-                        <progress class="profile-bar" value="{{ cat.amount }}" max="{{ stats.total_spent }}"></progress>
+                        <progress class="profile-bar" value="{{ cat.amount }}" max="{{ stats.total_spent or 1 }}"></progress>
                     </li>
                     {% else %}
-                    <li class="profile-empty">No expenses yet</li>
+                    <li class="profile-empty">{% if filter_active %}No expenses in this period{% else %}No expenses yet{% endif %}</li>
                     {% endfor %}
                 </ul>
             </section>
