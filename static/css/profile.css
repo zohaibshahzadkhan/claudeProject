@@ -208,3 +208,58 @@
     text-align: center;
     padding: 16px 0;
 }
+
+/* Date filter (Step 6) */
+.profile-filter-card { padding: 16px 24px; display: flex; flex-direction: column; gap: 8px; }
+
+.profile-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.profile-filter-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-filter-field label {
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.profile-filter-field input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--paper-card);
+    color: var(--ink);
+    font: inherit;
+}
+
+.profile-filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-filter-actions .btn-primary,
+.profile-filter-actions .btn-ghost {
+    width: auto;
+    margin-top: 0;
+}
+
+.profile-range-label {
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+    .profile-filter { flex-direction: column; align-items: stretch; }
+    .profile-filter-actions { justify-content: flex-start; }
+}

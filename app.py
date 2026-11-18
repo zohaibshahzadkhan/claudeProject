@@ -1,7 +1,8 @@
 import os
 import sqlite3
+from datetime import datetime
 
-from flask import Flask, redirect, render_template, request, session, url_for
+from flask import Flask, abort, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from database.db import (
@@ -117,6 +118,32 @@ def logout():
     return redirect(url_for("landing"))
 
 
+def parse_date_arg(name):
+    """Return the query arg as a strict YYYY-MM-DD string, None if blank, or abort(400)."""
+    raw = request.args.get(name, "").strip()
+    if not raw:
+        return None
+    try:
+        parsed = datetime.strptime(raw, "%Y-%m-%d")
+    except ValueError:
+        abort(400)
+    # strptime accepts non-padded values such as 2026-1-5; reject anything not in canonical form.
+    if parsed.strftime("%Y-%m-%d") != raw:
+        abort(400)
+    return raw
+
+
+def build_range_label(start_date, end_date):
+    """Human-readable description of the active date range."""
+    if start_date and end_date:
+        return f"{start_date} to {end_date}"
+    if start_date:
+        return f"From {start_date}"
+    if end_date:
+        return f"Until {end_date}"
+    return "All time"
+
+
 @app.route("/profile")
 def profile():
     user_id = session.get("user_id")
@@ -128,12 +155,22 @@ def profile():
         session.clear()
         return redirect(url_for("login"))
 
+    start_date = parse_date_arg("start_date")
+    end_date = parse_date_arg("end_date")
+    if start_date and end_date and start_date > end_date:
+        abort(400)
+
+    date_range = {"start_date": start_date, "end_date": end_date}
     return render_template(
         "profile.html",
         user=user,
-        stats=get_summary_stats(user_id),
-        transactions=get_recent_transactions(user_id),
-        categories=get_category_breakdown(user_id),
+        stats=get_summary_stats(user_id, **date_range),
+        transactions=get_recent_transactions(user_id, **date_range),
+        categories=get_category_breakdown(user_id, **date_range),
+        start_date=start_date,
+        end_date=end_date,
+        filter_active=bool(start_date or end_date),
+        range_label=build_range_label(start_date, end_date),
     )
 
 
