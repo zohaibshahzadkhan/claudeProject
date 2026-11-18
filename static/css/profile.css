@@ -201,3 +201,10 @@
     .profile-table td,
     .profile-table th { padding: 10px 12px; }
 }
+
+/* Empty states (no transactions / no expenses yet) */
+.profile-empty {
+    color: var(--ink-muted);
+    text-align: center;
+    padding: 16px 0;
+}
