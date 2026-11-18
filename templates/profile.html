@@ -59,6 +59,10 @@
                                 <td><span class="profile-badge profile-badge--{{ tx.category|lower }}">{{ tx.category }}</span></td>
                                 <td class="num">₹{{ "%.2f"|format(tx.amount) }}</td>
                             </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="4" class="profile-empty">No transactions yet</td>
+                            </tr>
                             {% endfor %}
                         </tbody>
                     </table>
@@ -72,10 +76,12 @@
                     <li class="profile-category">
                         <div class="profile-category-head">
                             <span class="profile-badge profile-badge--{{ cat.name|lower }}">{{ cat.name }}</span>
-                            <span class="num">₹{{ "%.2f"|format(cat.total) }}</span>
+                            <span class="num">₹{{ "%.2f"|format(cat.amount) }}</span>
                         </div>
-                        <progress class="profile-bar" value="{{ cat.total }}" max="{{ stats.total_spent }}"></progress>
+                        <progress class="profile-bar" value="{{ cat.amount }}" max="{{ stats.total_spent }}"></progress>
                     </li>
+                    {% else %}
+                    <li class="profile-empty">No expenses yet</li>
                     {% endfor %}
                 </ul>
             </section>
