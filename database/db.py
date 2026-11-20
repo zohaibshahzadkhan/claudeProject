@@ -125,6 +125,23 @@ def create_user(name, email, password_hash):
         conn.close()
 
 
+def insert_expense(user_id, amount, category, expense_date, description):
+    """Insert an expense for a user and return its id. description may be None."""
+    conn = get_db()
+    try:
+        with conn:
+            cursor = conn.execute(
+                """
+                INSERT INTO expenses (user_id, amount, category, date, description)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (user_id, amount, category, expense_date, description),
+            )
+            return cursor.lastrowid
+    finally:
+        conn.close()
+
+
 def get_user_by_id(user_id):
     """Return name, email, initials and member_since for this user, or None if missing."""
     conn = get_db()

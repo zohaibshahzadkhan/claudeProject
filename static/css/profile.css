@@ -99,6 +99,19 @@
     color: var(--ink);
 }
 
+/* Panel header row: title on the left, action button on the right */
+.profile-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.profile-panel-header .profile-panel-title {
+    margin-bottom: 0;
+}
+
 /* Numeric values */
 .num {
     text-align: right;

@@ -35,6 +35,15 @@ def seed_user_id(test_db):
 
 
 @pytest.fixture
+def auth_client(client, seed_user_id):
+    """A test client with the seeded demo user logged in via the session."""
+    with client.session_transaction() as sess:
+        sess["user_id"] = seed_user_id
+        sess["user_name"] = "Demo User"
+    return client
+
+
+@pytest.fixture
 def empty_user_id(test_db):
     """A registered user with no expenses."""
     return db.create_user(

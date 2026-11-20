@@ -1,6 +1,7 @@
+import math
 import os
 import sqlite3
-from datetime import datetime
+from datetime import date, datetime
 
 from flask import Flask, abort, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -14,11 +15,13 @@ from database.db import (
     get_user_by_email,
     get_user_by_id,
     init_db,
+    insert_expense,
     seed_db,
 )
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev-only-change-me")
+app.config["MAX_CONTENT_LENGTH"] = 16 * 1024  # bound the size of any request body
 
 INVALID_LOGIN_MSG = "Invalid email or password."
 
@@ -26,6 +29,19 @@ DUPLICATE_EMAIL_MSG = "An account with this email already exists."
 NAME_MAX_LENGTH = 100
 EMAIL_MAX_LENGTH = 254
 PASSWORD_MIN_LENGTH = 8
+
+# Must match the category names seeded in database/db.py.
+EXPENSE_CATEGORIES = (
+    "Food",
+    "Transport",
+    "Bills",
+    "Health",
+    "Entertainment",
+    "Shopping",
+    "Other",
+)
+DESCRIPTION_MAX_LENGTH = 200
+AMOUNT_MAX = 10_000_000
 
 def validate_registration(name, email, password, confirm_password):
     """Return an error message for invalid registration input, or None if valid."""
@@ -43,6 +59,53 @@ def validate_registration(name, email, password, confirm_password):
     if password != confirm_password:
         return "Passwords do not match."
     return None
+
+
+def validate_expense(amount_raw, category, date_raw, description_raw):
+    """Return (error, cleaned). error is a message or None; cleaned holds typed values when valid."""
+    amount_raw = amount_raw.strip()
+    date_raw = date_raw.strip()
+    try:
+        amount = float(amount_raw)
+    except ValueError:
+        return "Please enter a valid amount.", None
+    if not math.isfinite(amount):
+        return "Please enter a valid amount.", None
+    amount = round(amount, 2)
+    if amount <= 0:
+        return "Amount must be greater than 0.", None
+    if amount > AMOUNT_MAX:
+        return f"Amount must be {AMOUNT_MAX:,} or less.", None
+    if category not in EXPENSE_CATEGORIES:
+        return "Please choose a valid category.", None
+    try:
+        parsed = datetime.strptime(date_raw, "%Y-%m-%d")
+    except ValueError:
+        return "Please enter a valid date.", None
+    # strptime accepts non-padded values such as 2026-1-5; keep only canonical YYYY-MM-DD.
+    if parsed.strftime("%Y-%m-%d") != date_raw:
+        return "Please enter a valid date.", None
+    description = description_raw.strip() or None
+    if description and len(description) > DESCRIPTION_MAX_LENGTH:
+        return f"Description must be {DESCRIPTION_MAX_LENGTH} characters or fewer.", None
+    return None, {
+        "amount": amount,
+        "category": category,
+        "date": date_raw,
+        "description": description,
+    }
+
+
+def render_expense_form(form=None, error=None):
+    """Render the add-expense form with the shared categories, default date and limits."""
+    return render_template(
+        "add_expense.html",
+        categories=EXPENSE_CATEGORIES,
+        today=date.today().isoformat(),
+        max_description=DESCRIPTION_MAX_LENGTH,
+        form=form or {},
+        error=error,
+    )
 
 
 # ------------------------------------------------------------------ #
@@ -181,9 +244,34 @@ def analytics():
     return render_template("analytics.html")
 
 
-@app.route("/expenses/add")
+@app.route("/expenses/add", methods=["GET", "POST"])
 def add_expense():
-    return "Add expense — coming in Step 7"
+    if not session.get("user_id"):
+        return redirect(url_for("login"))
+
+    if request.method == "GET":
+        return render_expense_form()
+
+    form = {
+        "amount": request.form.get("amount", ""),
+        "category": request.form.get("category", ""),
+        "date": request.form.get("date", ""),
+        "description": request.form.get("description", ""),
+    }
+    error, cleaned = validate_expense(
+        form["amount"], form["category"], form["date"], form["description"]
+    )
+    if error:
+        return render_expense_form(form, error)
+
+    insert_expense(
+        session["user_id"],
+        cleaned["amount"],
+        cleaned["category"],
+        cleaned["date"],
+        cleaned["description"],
+    )
+    return redirect(url_for("profile"))
 
 
 @app.route("/expenses/<int:id>/edit")
@@ -200,4 +288,4 @@ if __name__ == "__main__":
     with app.app_context():
         init_db()
         seed_db()
-    app.run(debug=True, port=5001)
+    app.run(debug=os.environ.get("FLASK_DEBUG") == "1", port=5001)

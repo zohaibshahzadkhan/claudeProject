@@ -60,7 +60,10 @@
 
         <div class="profile-grid">
             <section class="profile-card profile-panel">
-                <h2 class="profile-panel-title">Recent transactions</h2>
+                <div class="profile-panel-header">
+                    <h2 class="profile-panel-title">Recent transactions</h2>
+                    <a class="btn-primary" href="{{ url_for('add_expense') }}">Add Expense</a>
+                </div>
                 <div class="profile-table-wrap">
                     <table class="profile-table">
                         <thead>
