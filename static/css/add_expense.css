@@ -1,0 +1,11 @@
+/* Add-expense page only. Shared form and auth styles live in style.css. */
+
+.add-expense-select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+.add-expense-optional {
+    font-weight: 400;
+    color: var(--ink-faint);
+}
