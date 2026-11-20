@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics — Spendly{% endblock %}
+
+{% block head %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/analytics.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="analytics-page">
+    <p class="analytics-breadcrumb">
+        <a href="{{ url_for('profile') }}">Dashboard</a>  /  Upcoming feature
+    </p>
+    <h1 class="analytics-title">Upcoming feature</h1>
+
+    <div class="analytics-card-wrap">
+        <div class="analytics-card">
+            <img class="analytics-accent analytics-accent--top" src="{{ url_for('static', filename='img/analytics/corner-accent.svg') }}" alt="">
+            <img class="analytics-accent analytics-accent--bottom" src="{{ url_for('static', filename='img/analytics/corner-accent.svg') }}" alt="">
+
+            <div class="analytics-icon-tile">
+                <img src="{{ url_for('static', filename='img/analytics/clock.svg') }}" alt="">
+            </div>
+
+            <span class="analytics-status">In development</span>
+
+            <h2 class="analytics-heading">Coming soon</h2>
+
+            <div class="analytics-description">
+                <p>We’re working on this feature.</p>
+                <p>It’ll be ready for you to explore soon.</p>
+            </div>
+
+            <div class="analytics-dots">
+                <img src="{{ url_for('static', filename='img/analytics/progress-dot-1.svg') }}" alt="">
+                <img src="{{ url_for('static', filename='img/analytics/progress-dot-2.svg') }}" alt="">
+                <img src="{{ url_for('static', filename='img/analytics/progress-dot-3.svg') }}" alt="">
+            </div>
+
+            <a class="analytics-button" href="{{ url_for('profile') }}">Back to dashboard</a>
+
+            <p class="analytics-note">You can keep tracking your expenses as usual.</p>
+        </div>
+    </div>
+
+    <p class="analytics-feedback">
+        Have a suggestion? <a href="#">Share feedback</a>
+    </p>
+</section>
+{% endblock %}
