@@ -72,7 +72,7 @@ def test_get_recent_transactions_newest_first(test_db, seed_user_id):
     dates = [row["date"] for row in rows]
     assert dates == sorted(dates, reverse=True)
     for row in rows:
-        assert set(row.keys()) == {"date", "description", "category", "amount"}
+        assert set(row.keys()) == {"id", "date", "description", "category", "amount"}
 
 
 def test_get_recent_transactions_respects_limit(test_db, seed_user_id):

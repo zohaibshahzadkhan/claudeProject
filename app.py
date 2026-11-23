@@ -10,6 +10,7 @@ from database.db import (
     create_user,
     get_category_breakdown,
     get_db,
+    get_expense_by_id,
     get_recent_transactions,
     get_summary_stats,
     get_user_by_email,
@@ -17,6 +18,7 @@ from database.db import (
     init_db,
     insert_expense,
     seed_db,
+    update_expense,
 )
 
 app = Flask(__name__)
@@ -104,6 +106,18 @@ def render_expense_form(form=None, error=None):
         today=date.today().isoformat(),
         max_description=DESCRIPTION_MAX_LENGTH,
         form=form or {},
+        error=error,
+    )
+
+
+def render_edit_form(expense, form=None, error=None):
+    """Render the edit-expense form. form holds submitted values on a failed POST, else expense is shown."""
+    return render_template(
+        "edit_expense.html",
+        expense=expense,
+        categories=EXPENSE_CATEGORIES,
+        max_description=DESCRIPTION_MAX_LENGTH,
+        form=form,
         error=error,
     )
 
@@ -274,9 +288,41 @@ def add_expense():
     return redirect(url_for("profile"))
 
 
-@app.route("/expenses/<int:id>/edit")
+@app.route("/expenses/<int:id>/edit", methods=["GET", "POST"])
 def edit_expense(id):
-    return "Edit expense — coming in Step 8"
+    if not session.get("user_id"):
+        return redirect(url_for("login"))
+
+    expense = get_expense_by_id(id, session["user_id"])
+    if expense is None:
+        abort(404)
+
+    if request.method == "GET":
+        return render_edit_form(expense)
+
+    form = {
+        "amount": request.form.get("amount", ""),
+        "category": request.form.get("category", ""),
+        "date": request.form.get("date", ""),
+        "description": request.form.get("description", ""),
+    }
+    error, cleaned = validate_expense(
+        form["amount"], form["category"], form["date"], form["description"]
+    )
+    if error:
+        return render_edit_form(expense, form, error)
+
+    updated = update_expense(
+        id,
+        session["user_id"],
+        cleaned["amount"],
+        cleaned["category"],
+        cleaned["date"],
+        cleaned["description"],
+    )
+    if not updated:
+        abort(404)
+    return redirect(url_for("profile"))
 
 
 @app.route("/expenses/<int:id>/delete")
