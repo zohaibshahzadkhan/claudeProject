@@ -157,6 +157,16 @@
 
 .profile-table-action:hover { text-decoration: underline; }
 
+.profile-table-form { display: inline; margin: 0 0 0 12px; }
+
+.profile-table-action--button {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
 /* Category badges */
 .profile-badge {
     display: inline-block;
