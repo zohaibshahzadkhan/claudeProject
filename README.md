@@ -42,13 +42,13 @@ Spendly lets a registered user record expenses, see summary statistics, filter t
 - Registration and login with hashed passwords (`werkzeug.security`) and session-based auth
 - Profile page showing summary stats, recent transactions and category breakdown, with a date-range filter (`start_date` / `end_date` query parameters)
 - Add-expense form (`GET` + `POST /expenses/add`) with server-side validation, bounded input sizes and a fixed category list
+- Edit-expense form (`GET` + `POST /expenses/<id>/edit`), scoped to the logged-in user
+- Delete-expense action (`POST /expenses/<id>/delete`), triggered from the profile page with a confirmation prompt
 - Analytics page (rendered behind login; content is a placeholder)
 
-**Not yet implemented:** edit (`/expenses/<id>/edit`) and delete (`/expenses/<id>/delete`). Both still return placeholder strings in `app.py` and are the planned next steps in the roadmap.
+**Stack** (from `requirements.txt`): Flask 3.1.3, Werkzeug 3.1.6, pytest 8.3.5, pytest-flask 1.3.0, black 25.1.0 (formatter, run by a hook). Python 3.10+.
 
-**Stack** (from `requirements.txt`): Flask 3.1.3, Werkzeug 3.1.6, pytest 8.3.5, pytest-flask 1.3.0. Python 3.10+.
-
-The roadmap is organised as numbered specs in `.claude/specs/` (01 through 07). Each spec is the contract for one feature branch.
+The roadmap is organised as numbered specs in `.claude/specs/` (01 through 09). Each spec is the contract for one feature branch.
 
 ---
 
@@ -101,8 +101,9 @@ Claude Code was used across the whole project lifecycle, from writing project ru
 flowchart TD
     CM["CLAUDE.md<br/>project rules, architecture, conventions"] -->|"loaded into every session"| Session["Claude Code session"]
     Settings["settings.json<br/>Edit and Write require approval"] -->|"permission gate"| Session
-    Specs["specs/01 to 07 .md<br/>feature contracts"] -->|"input to"| Cmds
-    Cmds["commands/*.md<br/>5 slash commands"] -->|"orchestrate"| Agents
+    Hooks["settings.json hooks<br/>PostToolUse black, PreToolUse guard"] -->|"run on tool calls"| Session
+    Specs["specs/01 to 09 .md<br/>feature contracts"] -->|"input to"| Cmds
+    Cmds["commands/*.md<br/>6 slash commands"] -->|"orchestrate"| Agents
     Agents["agents/*.md<br/>4 subagents with restricted tools"] -->|"report back to"| Session
     Skill["skills/frontend-design<br/>spendly-ui-designer"] -.->|"explicit invocation only"| Session
 ```
@@ -112,18 +113,18 @@ flowchart TD
 | Area | Status | Basis |
 |---|---|---|
 | Project instructions (`CLAUDE.md`) | ✅ Verified | Committed in `7a0aa66` and `e256953`; contains architecture, code-style and warning sections |
-| Slash commands (5) | ✅ Verified (definitions) | Added in `c9e945b` and `8085ebc`; each has frontmatter and a full procedure |
+| Slash commands (6) | ✅ Verified (definitions) | Added in `c9e945b` and `8085ebc`; `/ship-feature` added in `0d91b59`. Each has frontmatter and a full procedure |
+| Hooks (2) | ✅ Verified (configuration) | `PostToolUse` and `PreToolUse` entries in `.claude/settings.json`, added in `0d91b59`. Whether they fire is not captured in the repo, but the Bash guard blocked a test command during the verification for this update |
 | Subagents (4) | ✅ Verified (definitions) | Added in `8085ebc`; each has `tools:` and `model:` frontmatter |
 | Skill (1) | ✅ Verified (definition) | Added in `f04f617` |
 | Permission configuration | ✅ Verified | `.claude/settings.json` |
-| Spec-driven development | ✅ Verified | Seven spec files in `.claude/specs/`, one per feature branch |
+| Spec-driven development | ✅ Verified | Nine spec files in `.claude/specs/`, one per feature |
 | Feature branches and PRs | ✅ Verified | Branch names and merge commits in Git history (Section 11) |
 | `/create-spec` workflow | 🔶 Consistent with history | Branch names such as `feature/login-logout` and numbered spec files match the command's naming rules |
-| `/test-feature` workflow | 🔶 Consistent with history | Only `tests/test_06-date-filter-profile-page.py` follows the command's `tests/test_$ARGUMENTS.py` output name; other test files were named differently |
+| `/test-feature` workflow | 🔶 Consistent with history | `tests/test_06-date-filter-profile-page.py` and `tests/test_09-delete-expense.py` follow the command's `tests/test_$ARGUMENTS.py` output name; other test files were named differently |
 | `/code-review-feature` workflow | 🔶 Consistent with history | Command and reviewer agents exist, but no review reports are committed, so runs cannot be confirmed |
-| Co-authored commits | ✅ Verified | 10 of 23 commits on `origin/main` carry a `Co-Authored-By: Claude Haiku 5.5` trailer |
+| Co-authored commits | ✅ Verified | 11 of 28 commits on `origin/main` carry a `Co-Authored-By: Claude Haiku 5.5` trailer |
 | Local plan files | 🔶 Present but not in the repo | Three files exist in `.claude/plans/`; the directory is in `.gitignore`, so they are not in Git history |
-| Hooks | ⚪ Not used | No `hooks` key in `.claude/settings*.json` |
 | MCP servers (project-level) | ⚪ Not used | No `.mcp.json` in the repository |
 
 ---
@@ -169,6 +170,9 @@ Each feature below follows the same structure: what it is, how it works, why it 
 | `/test-feature` | `.claude/commands/test-feature.md` | `Bash(python -m pytest)` | Has a test-writer write tests from the spec, then a test-runner runs only that file |
 | `/seed-user` | `.claude/commands/seed-user.md` | `Read, Bash(python3:*)` | Creates one dummy user with a unique generated email |
 | `/seed-expenses` | `.claude/commands/seed-expenses.md` | `Read, Bash(python3:*)` | Inserts N expenses for a user, spread over M months, in a single transaction |
+| `/ship-feature` | `.claude/commands/ship-feature.md` | `Read, Bash, mcp__github__create_pull_request, mcp__github__merge_pull_request, mcp__github__delete_branch` | Generates a Conventional Commit message from the diff, commits (`git add .`), pushes, opens a PR, squash-merges it, and deletes the remote and local branch |
+
+`/ship-feature` is the only command that merges. Its procedure does not invoke `/code-review-feature`, so the review step is a separate, manual choice rather than part of the command (see Section 13).
 
 **How it was used.** `/create-spec` encodes the team's Git and spec rules: it refuses to start with a dirty tree, slugifies the feature name, avoids branch-name collisions by appending `-01`, `-02` and so on, and forces the output into a fixed spec template (Section 8.2).
 
@@ -242,7 +246,7 @@ disable-model-invocation: true
 
 **What it is.** A spec is a short Markdown contract describing one feature: overview, dependencies, routes, database changes, templates, files to create or modify, rules, and a testable definition of done.
 
-**Where it lives.** Seven committed specs, `01-database-setup.md` through `07-add-expense.md`. Plans (`.claude/plans/01` to `03`) exist locally but are gitignored.
+**Where it lives.** Nine committed specs, `01-database-setup.md` through `09-delete-expense.md`. Plans (`.claude/plans/01` to `03`) exist locally but are gitignored.
 
 **How it was used.** The spec is the input to three steps:
 
@@ -266,11 +270,28 @@ Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>
 
 **Benefits.** Attribution is explicit in history, and each feature can be reviewed as a single unit (Section 11).
 
-### 4.8 Features checked and not used
+### 4.8 Hooks — `settings.json` `hooks`
+
+**What it is.** A hook is a shell command that Claude Code runs automatically at a fixed point in the tool-call lifecycle. `PreToolUse` runs before a tool executes and can block it (exit code 2). `PostToolUse` runs after it completes. Unlike instructions in `CLAUDE.md`, a hook is enforced by the harness, not by the model's compliance.
+
+**Where it lives.** `.claude/settings.json`, added in `0d91b59`. Two hooks are configured:
+
+| Event | Matcher | Action | Source |
+|---|---|---|---|
+| `PostToolUse` | `Write\|Edit` | Runs `python3 -m black --quiet <file>` when the edited file ends in `.py` | `settings.json` |
+| `PreToolUse` | `Bash` | Blocks a command that combines a destructive verb with a protected path (exit code 2) | `settings.json` |
+
+**How it was used.**
+
+- **Formatting.** `black==25.1.0` was added to `requirements.txt` in `fe58cd7` (#10), and the hook was added in `0d91b59` (#11). Together they keep every edited Python file in the same style without a manual step. Both changes are in `CLAUDE.md`'s "keep `requirements.txt` in sync" spirit.
+- **Destructive-command guard.** The `PreToolUse` hook protects `spendly.db`, `.env` and `migrations/` from `rm`, `unlink` and `truncate`. During verification for this update, it blocked a test command that contained `rm` and `spendly.db`, with the message `BLOCKED: Cannot run destructive command on protected file: spendly.db`.
+
+**Limitation.** The guard matches substrings, not parsed commands. `"rm "` also matches inside other words, and it does not protect files outside the three listed paths. It is a guardrail, not a sandbox. Section 8.8 shows the full logic.
+
+### 4.9 Features checked and not used
 
 | Feature | Status | Note |
 |---|---|---|
-| Hooks | ⚪ Not used | `.claude/settings.json` has no `hooks` key, so no automatic pre- or post-tool actions are configured |
 | Project-level MCP servers | ⚪ Not used | No `.mcp.json` exists |
 | Headless or CI runs | ⚪ Not used | No CI configuration file is present in the repository |
 
@@ -286,6 +307,9 @@ Listing these explicitly keeps the feature inventory honest. Documenting only wh
 | Slash: `/create-spec` | `.claude/commands/create-spec.md` | `c9e945b` | Clean-tree check, branch naming, spec template |
 | Slash: `/seed-user` | `.claude/commands/seed-user.md` | `c9e945b` | Dummy user creation |
 | Slash: `/seed-expenses` | `.claude/commands/seed-expenses.md` | `c9e945b` | Dummy expense generation |
+| Slash: `/ship-feature` | `.claude/commands/ship-feature.md` | `0d91b59` | Commit, push, PR, squash-merge, branch cleanup |
+| Hook: PostToolUse black | `.claude/settings.json` (`hooks.PostToolUse`) | `0d91b59` | Formats each edited `.py` file |
+| Hook: PreToolUse guard | `.claude/settings.json` (`hooks.PreToolUse`) | `0d91b59` | Blocks destructive Bash commands on protected paths |
 | Slash: `/test-feature` | `.claude/commands/test-feature.md` | `8085ebc` | Test-writer then test-runner pipeline |
 | Slash: `/code-review-feature` | `.claude/commands/code-review-feature.md` | `8085ebc` | Parallel review and approval gate |
 | Subagent: test-writer | `.claude/agents/spendly-test-writer.md` | `8085ebc` | Spec-based test generation |
@@ -294,7 +318,7 @@ Listing these explicitly keeps the feature inventory honest. Documenting only wh
 | Subagent: quality reviewer | `.claude/agents/spendly-quality-reviewer.md` | `8085ebc` | Read-only quality review of the diff |
 | Skill: UI designer | `.claude/skills/frontend-design/SKILL.md` | `f04f617` | Stack-specific UI guidance (explicit invocation only) |
 | Permissions | `.claude/settings.json` | `93b8d23` | Edit and Write require approval |
-| Specs | `.claude/specs/01` to `07` | `7a0aa66` onward | Feature contracts used by tests and reviews |
+| Specs | `.claude/specs/01` to `09` | `7a0aa66` onward | Feature contracts used by tests and reviews |
 | Feature branches and PR merges | Git history | From `e0cf9d5` onward | One branch and one PR per feature |
 | Co-author attribution | Commit messages | From `93b8d23` onward (first trailer) | Records Claude's contribution |
 
@@ -309,11 +333,11 @@ The sequence below is the workflow the repository's configuration describes. Eac
 | 1. Set rules | Architecture, style and constraints are written to `CLAUDE.md` | `CLAUDE.md` | ✅ |
 | 2. Start a feature | `/create-spec N name` checks a clean tree, creates `feature/<slug>`, and writes a spec | `create-spec.md`, `specs/` | 🔶 |
 | 3. Plan | The spec tells the developer to enter Plan Mode before implementing | `create-spec.md` (Step 9), local `.claude/plans/` | 🔶 |
-| 4. Implement | Code goes into the layers that `CLAUDE.md` defines: routes in `app.py`, SQL in `database/db.py`, pages in `templates/` | `CLAUDE.md` | ✅ |
+| 4. Implement | Code goes into the layers that `CLAUDE.md` defines: routes in `app.py`, SQL in `database/db.py`, pages in `templates/`. A PostToolUse hook runs `black` on each edited `.py` file | `CLAUDE.md`, `settings.json` | ✅ |
 | 5. Test | `/test-feature slug` runs the test-writer, then the test-runner on that single file | `test-feature.md`, `spendly-test-*.md` | 🔶 |
 | 6. Review | `/code-review-feature slug` runs both reviewers in parallel and waits for approval | `code-review-feature.md`, `spendly-*-reviewer.md` | 🔶 |
 | 7. Commit | Commit with the Claude co-author trailer | Git history | ✅ |
-| 8. Integrate | Push the branch, open a PR, merge into `main` | Git history (`#1` to `#7`) | ✅ |
+| 8. Integrate | `/ship-feature` commits, pushes, opens a PR, squash-merges into `main`, and deletes the branch | `ship-feature.md`, Git history (`#1` to `#12`) | ✅ |
 
 ---
 
@@ -332,7 +356,7 @@ flowchart LR
     E --> F{"User approves<br/>action plan?"}
     F -->|"yes"| G["Fix and commit<br/>with Co-Authored-By"]
     F -->|"no"| C
-    G --> H["Push branch<br/>open PR<br/>merge to main"]
+    G --> H["/ship-feature<br/>commit, push, PR, squash merge"]
 ```
 
 ### 7.2 `/test-feature` sequence
@@ -532,6 +556,26 @@ def test_db(tmp_path, monkeypatch):
     return path
 ```
 
+### 8.8 The PreToolUse guard hook
+
+The `PreToolUse` hook in `.claude/settings.json` runs this logic on every `Bash` tool call. The JSON string in the file is the escaped form of the script below, shown unescaped:
+
+```python
+import sys, json
+data = json.load(sys.stdin)
+cmd = data.get('tool_input', {}).get('command', '')
+protected = ['spendly.db', '.env', 'migrations/']
+dangerous = ['rm ', 'rm -', 'unlink ', 'truncate ']
+for d in dangerous:
+    if d in cmd:
+        for p in protected:
+            if p in cmd:
+                print(f'BLOCKED: Cannot run destructive command on protected file: {p}', file=sys.stderr)
+                raise SystemExit(2)
+```
+
+Claude Code passes the pending tool call as JSON on stdin. Exit code 2 blocks the call, and the message on stderr is returned to the model.
+
 ---
 
 ## 9. Engineering Decisions and Best Practices
@@ -549,6 +593,7 @@ def test_db(tmp_path, monkeypatch):
 | **Parameterised SQL only** | Prevents SQL injection; enforced by `CLAUDE.md` and checked by the security reviewer's checklist | No f-string SQL found in `app.py` or `database/db.py` |
 | **Hashed passwords** | Passwords are stored with `generate_password_hash` and checked with `check_password_hash` | `app.py` register and login routes |
 | **Bounded input** | Request size is capped at 16 KB and amounts are capped at 10,000,000 | `app.py` configuration and `validate_expense` |
+| **Deterministic guardrails via hooks** | Formatting and the destructive-command guard run in the harness, so they do not depend on the model remembering a rule | `settings.json` `hooks` (Section 4.8) |
 
 ---
 
@@ -556,21 +601,23 @@ def test_db(tmp_path, monkeypatch):
 
 ### Test suite
 
-The suite contains **110 tests** in three files. Counts come from `pytest --collect-only`:
+The suite contains **166 tests** in five files. Counts come from `pytest --collect-only`:
 
 | File | Tests | Covers |
 |---|---|---|
 | `tests/test_backend_connection.py` | 18 | Database helpers, profile data |
 | `tests/test_add_expense.py` | 31 | Add-expense validation, auth guard, persistence |
+| `tests/test_edit_expense.py` | 23 | Edit-expense form, validation, ownership |
 | `tests/test_06-date-filter-profile-page.py` | 61 | Date-range filtering on the profile page |
+| `tests/test_09-delete-expense.py` | 33 | Delete action, ownership, profile links |
 
 ### Results
 
-Run on the `docs/claude-code-technical-readme` branch with the project's virtual environment:
+Run on `origin/main` at `fa541b4` with the project's virtual environment:
 
 ```
 $ venv/bin/python -m pytest -q
-110 passed in 10.24s
+166 passed in 22.25s
 ```
 
 ### Test isolation
@@ -601,10 +648,15 @@ Each feature has its own branch, named by the `create-spec` rule `feature/<slug>
 | #5 | `feature/backend-routes-profile-page` | Profile page backed by the database |
 | #6 | `feature/date-filter-profile-page` | Date filter on the profile page |
 | #7 | (squashed onto `main`) | Add-expense form and POST handler |
+| #8 | `docs/claude-code-technical-readme` | This README |
+| #9 | (branch not recorded) | Edit expense |
+| #10 | (branch not recorded) | Add `black` formatter dependency |
+| #11 | (branch not recorded) | Claude Code black hook and `/ship-feature` command |
+| #12 | (branch not recorded) | Delete expense from the profile page |
 
 ### Attribution
 
-`origin/main` has 23 commits. Ten carry a `Co-Authored-By: Claude Haiku 5.5` trailer, which makes Claude's contribution visible in the history.
+`origin/main` has 28 commits. Eleven carry a `Co-Authored-By: Claude Haiku 5.5` trailer, which makes Claude's contribution visible in the history.
 
 ### Repository hygiene
 
@@ -633,13 +685,14 @@ Each feature has its own branch, named by the `create-spec` rule `feature/<slug>
 
 Being precise about gaps is part of the engineering record. These are the issues found while writing this document:
 
-- **`CLAUDE.md` status table is stale.** It says `database/db.py` is "currently empty" and that `/profile`, `/expenses/add`, and related routes are stubs. On `main`, `db.py` contains the query helpers, `/profile` is implemented (date-filtered), and `/expenses/add` has a full GET and POST handler. Claude Code sessions that rely on the stale table could make wrong assumptions. This is the most important documentation fix.
+- **`CLAUDE.md` status table is stale.** It says `database/db.py` is "currently empty", and it lists `GET /profile`, `GET /expenses/add` and `GET /expenses/<id>/edit` as stubs. On `origin/main`, `db.py` contains the query helpers, `/profile` is implemented (date-filtered), and both `/expenses/add` and `/expenses/<id>/edit` have full GET and POST handlers. Only the delete row (`POST /expenses/<id>/delete`) is current. Claude Code sessions that rely on the stale table could make wrong assumptions. This is the most important documentation fix.
 - **Spec 07 and the code disagree on file location.** The spec names `database/queries.py`. The code uses `database/db.py`. The code follows `CLAUDE.md`, so the spec should be updated.
-- **Test file naming is inconsistent.** Only `test_06-date-filter-profile-page.py` matches the `/test-feature` output pattern `tests/test_$ARGUMENTS.py`. `test_backend_connection.py` and `test_add_expense.py` do not match their spec names.
+- **Test file naming is inconsistent.** `test_06-date-filter-profile-page.py` and `test_09-delete-expense.py` match the `/test-feature` output pattern `tests/test_$ARGUMENTS.py`. `test_backend_connection.py`, `test_add_expense.py` and `test_edit_expense.py` do not match their spec names (`05-backend-routes-profile-page`, `07-add-expense`, `08-edit-expense`).
+- **`/ship-feature` merges without the review gate.** Its procedure runs `git add .`, squash-merges the PR, and deletes branches. It never invokes `/code-review-feature`, and it is the only command that merges. The review gate therefore depends on the developer running `/code-review-feature` first.
+- **Hook guard is substring-based.** The `PreToolUse` guard in Section 8.8 matches text, not parsed commands. It can block harmless commands that happen to contain `rm ` and a protected name, and it does not cover paths outside `spendly.db`, `.env` and `migrations/`. `migrations/` does not exist in this repository.
 - **Review and test pipeline output is not committed.** The command and agent definitions exist, but the repository contains no review reports or runner output. Their effectiveness is therefore not demonstrated by the repository itself.
 - **Subagent policy compliance is not provable from the repo.** `CLAUDE.md` asks for subagents during exploration and planning. Transcripts are not stored, so this README does not claim that the policy was followed for every feature.
 - **Plans are not versioned.** `.claude/plans/` is gitignored, so the plan files for features 01 to 03 are local only.
-- **Edit and delete routes are not implemented.** `/expenses/<id>/edit` and `/expenses/<id>/delete` are still placeholders.
 
 ---
 
@@ -665,7 +718,7 @@ To use Claude Code in this repository, install the CLI and run `claude` from the
 
 ## 15. Conclusion
 
-Spendly is a small application, but its development process is the more interesting part. Claude Code was set up as an engineering system: project rules in `CLAUDE.md`, five commands with restricted tool access, four subagents separated by role, a permission policy that requires approval for edits, and a spec-driven Git workflow that ends in attributed commits and merged pull requests.
+Spendly is a small application, but its development process is the more interesting part. Claude Code was set up as an engineering system: project rules in `CLAUDE.md`, six commands with restricted tool access, four subagents separated by role, a permission policy that requires approval for edits, two hooks that enforce formatting and a destructive-command guard, and a spec-driven Git workflow that ends in attributed commits and merged pull requests.
 
 The configuration is committed alongside the code, and this README traces each claim to a file. Where the evidence is partial, the document says so, and Section 13 lists the gaps that remain.
 
