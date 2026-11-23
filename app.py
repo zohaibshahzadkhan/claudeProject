@@ -8,6 +8,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from database.db import (
     create_user,
+    delete_expense as delete_expense_row,
     get_category_breakdown,
     get_db,
     get_expense_by_id,
@@ -45,6 +46,7 @@ EXPENSE_CATEGORIES = (
 DESCRIPTION_MAX_LENGTH = 200
 AMOUNT_MAX = 10_000_000
 
+
 def validate_registration(name, email, password, confirm_password):
     """Return an error message for invalid registration input, or None if valid."""
     if not name or not email or not password or not confirm_password:
@@ -54,7 +56,7 @@ def validate_registration(name, email, password, confirm_password):
     if len(email) > EMAIL_MAX_LENGTH:
         return f"Email must be {EMAIL_MAX_LENGTH} characters or fewer."
     at_index = email.find("@")
-    if at_index < 1 or "." not in email[at_index + 1:]:
+    if at_index < 1 or "." not in email[at_index + 1 :]:
         return "Please enter a valid email address."
     if len(password) < PASSWORD_MIN_LENGTH:
         return f"Password must be at least {PASSWORD_MIN_LENGTH} characters."
@@ -89,7 +91,10 @@ def validate_expense(amount_raw, category, date_raw, description_raw):
         return "Please enter a valid date.", None
     description = description_raw.strip() or None
     if description and len(description) > DESCRIPTION_MAX_LENGTH:
-        return f"Description must be {DESCRIPTION_MAX_LENGTH} characters or fewer.", None
+        return (
+            f"Description must be {DESCRIPTION_MAX_LENGTH} characters or fewer.",
+            None,
+        )
     return None, {
         "amount": amount,
         "category": category,
@@ -125,6 +130,7 @@ def render_edit_form(expense, form=None, error=None):
 # ------------------------------------------------------------------ #
 # Routes                                                              #
 # ------------------------------------------------------------------ #
+
 
 @app.route("/")
 def landing():
@@ -188,6 +194,7 @@ def privacy():
 # ------------------------------------------------------------------ #
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #
+
 
 @app.route("/logout")
 def logout():
@@ -325,9 +332,15 @@ def edit_expense(id):
     return redirect(url_for("profile"))
 
 
-@app.route("/expenses/<int:id>/delete")
+@app.route("/expenses/<int:id>/delete", methods=["POST"])
 def delete_expense(id):
-    return "Delete expense — coming in Step 9"
+    if not session.get("user_id"):
+        return redirect(url_for("login"))
+
+    deleted = delete_expense_row(id, session["user_id"])
+    if not deleted:
+        abort(404)
+    return redirect(url_for("profile"))
 
 
 if __name__ == "__main__":

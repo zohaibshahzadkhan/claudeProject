@@ -104,9 +104,7 @@ def get_user_by_email(email):
     """Return the user row with this email, or None if no user matches."""
     conn = get_db()
     try:
-        return conn.execute(
-            "SELECT * FROM users WHERE email = ?", (email,)
-        ).fetchone()
+        return conn.execute("SELECT * FROM users WHERE email = ?", (email,)).fetchone()
     finally:
         conn.close()
 
@@ -170,6 +168,20 @@ def update_expense(expense_id, user_id, amount, category, expense_date, descript
                 WHERE id = ? AND user_id = ?
                 """,
                 (amount, category, expense_date, description, expense_id, user_id),
+            )
+            return cursor.rowcount > 0
+    finally:
+        conn.close()
+
+
+def delete_expense(expense_id, user_id):
+    """Delete an expense owned by user_id. Return True if a row was removed, False otherwise."""
+    conn = get_db()
+    try:
+        with conn:
+            cursor = conn.execute(
+                "DELETE FROM expenses WHERE id = ? AND user_id = ?",
+                (expense_id, user_id),
             )
             return cursor.rowcount > 0
     finally:
