@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="730" viewBox="0 0 1200 730" role="img" aria-label="Feature by Claude Code approach matrix">
+<title>Feature by Claude Code approach matrix</title>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0B1020"/><stop offset="1" stop-color="#121A33"/>
+  </linearGradient>
+  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+    <path d="M32 0H0V32" fill="none" stroke="#FFFFFF" stroke-opacity="0.035"/>
+  </pattern>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10z" fill="#8D9AB8"/>
+  </marker>
+  <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10z" fill="#F2C14E"/>
+  </marker>
+</defs>
+<rect width="1200" height="730" rx="18" fill="url(#bg)"/>
+<rect width="1200" height="730" rx="18" fill="url(#grid)"/>
+<rect x="0.5" y="0.5" width="1199" height="729" rx="18" fill="none" stroke="#2A3658"/>
+<text x="40" y="56" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#E8EDF7" text-anchor="start" letter-spacing="-0.3" opacity="1">Which Claude Code approach was used for which feature</text><text x="40" y="82" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8D9AB8" text-anchor="start" letter-spacing="0" opacity="1">Built from git history and the files in .claude/. Each row adds tooling as the workflow matured.</text>
+<rect x="40" y="114" width="1120" height="548" rx="14" fill="#151E36" fill-opacity="0.6" stroke="#2A3658" stroke-width="1"/>
+<rect x="346.0" y="126" width="79" height="3" rx="1.5" fill="#E8825F"/>
+<text x="385.5" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">CLAUDE.md</text>
+<text x="385.5" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">rules</text>
+<rect x="437.0" y="126" width="79" height="3" rx="1.5" fill="#5B9BFF"/>
+<text x="476.5" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Spec</text>
+<text x="476.5" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">first</text>
+<rect x="528.0" y="126" width="79" height="3" rx="1.5" fill="#2ED3C0"/>
+<text x="567.5" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Branch</text>
+<text x="567.5" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">+ PR</text>
+<rect x="619.0" y="126" width="79" height="3" rx="1.5" fill="#F178B6"/>
+<text x="658.5" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">UI</text>
+<text x="658.5" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">skill</text>
+<rect x="710.0" y="126" width="79" height="3" rx="1.5" fill="#3FCB7E"/>
+<text x="749.5" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">pytest</text>
+<text x="749.5" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">suite</text>
+<rect x="801.0" y="126" width="79" height="3" rx="1.5" fill="#3FCB7E"/>
+<text x="840.5" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Test</text>
+<text x="840.5" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">agents</text>
+<rect x="892.0" y="126" width="79" height="3" rx="1.5" fill="#F2C14E"/>
+<text x="931.5" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Hooks</text>
+<text x="931.5" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1"></text>
+<rect x="983.0" y="126" width="79" height="3" rx="1.5" fill="#F178B6"/>
+<text x="1022.5" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">/ship-</text>
+<text x="1022.5" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">feature</text>
+<rect x="1074.0" y="126" width="79" height="3" rx="1.5" fill="#A98BFF"/>
+<text x="1113.5" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Claude</text>
+<text x="1113.5" y="166" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">co-author</text>
+<text x="60" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#8D9AB8" text-anchor="start" letter-spacing="1.5" opacity="1">FEATURE</text>
+<text x="320" y="150" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#8D9AB8" text-anchor="end" letter-spacing="1.5" opacity="1">SHIPPED</text>
+<rect x="41" y="182" width="1118" height="42" fill="#FFFFFF" fill-opacity="0.025"/>
+<text x="60" y="208" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">Landing · Terms · Privacy</text>
+<text x="320" y="202" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">pre-spec</text>
+<text x="320" y="217" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 3</text>
+<line x1="380.5" y1="203.0" x2="390.5" y2="203.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="471.5" y1="203.0" x2="481.5" y2="203.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="562.5" y1="203.0" x2="572.5" y2="203.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="653.5" y1="203.0" x2="663.5" y2="203.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="744.5" y1="203.0" x2="754.5" y2="203.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="835.5" y1="203.0" x2="845.5" y2="203.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="926.5" y1="203.0" x2="936.5" y2="203.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="203.0" x2="1027.5" y2="203.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1113.5" cy="203.0" r="8" fill="#A98BFF"/>
+<path d="M1110.0 203.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="60" y="250" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">01  Database setup</text>
+<text x="320" y="244" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #1</text>
+<text x="320" y="259" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 9</text>
+<circle cx="385.5" cy="245.0" r="8" fill="#E8825F"/>
+<path d="M382.0 245.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="476.5" cy="245.0" r="8" fill="#5B9BFF"/>
+<path d="M473.0 245.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="567.5" cy="245.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 245.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="653.5" y1="245.0" x2="663.5" y2="245.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="744.5" y1="245.0" x2="754.5" y2="245.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="835.5" y1="245.0" x2="845.5" y2="245.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="926.5" y1="245.0" x2="936.5" y2="245.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="245.0" x2="1027.5" y2="245.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1108.5" y1="245.0" x2="1118.5" y2="245.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<rect x="41" y="266" width="1118" height="42" fill="#FFFFFF" fill-opacity="0.025"/>
+<text x="60" y="292" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">02  Registration</text>
+<text x="320" y="286" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #2</text>
+<text x="320" y="301" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 10</text>
+<circle cx="385.5" cy="287.0" r="8" fill="#E8825F"/>
+<path d="M382.0 287.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="476.5" cy="287.0" r="8" fill="#5B9BFF"/>
+<path d="M473.0 287.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="567.5" cy="287.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 287.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="653.5" y1="287.0" x2="663.5" y2="287.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="744.5" y1="287.0" x2="754.5" y2="287.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="835.5" y1="287.0" x2="845.5" y2="287.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="926.5" y1="287.0" x2="936.5" y2="287.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="287.0" x2="1027.5" y2="287.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1108.5" y1="287.0" x2="1118.5" y2="287.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<text x="60" y="334" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">03  Login &amp; logout</text>
+<text x="320" y="328" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #3</text>
+<text x="320" y="343" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 17</text>
+<circle cx="385.5" cy="329.0" r="8" fill="#E8825F"/>
+<path d="M382.0 329.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="476.5" cy="329.0" r="8" fill="#5B9BFF"/>
+<path d="M473.0 329.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="567.5" cy="329.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 329.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="653.5" y1="329.0" x2="663.5" y2="329.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="744.5" y1="329.0" x2="754.5" y2="329.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="835.5" y1="329.0" x2="845.5" y2="329.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="926.5" y1="329.0" x2="936.5" y2="329.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="329.0" x2="1027.5" y2="329.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1113.5" cy="329.0" r="8" fill="#A98BFF"/>
+<path d="M1110.0 329.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="41" y="350" width="1118" height="42" fill="#FFFFFF" fill-opacity="0.025"/>
+<text x="60" y="376" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">04  Profile page (UI)</text>
+<text x="320" y="370" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #4</text>
+<text x="320" y="385" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 17</text>
+<circle cx="385.5" cy="371.0" r="8" fill="#E8825F"/>
+<path d="M382.0 371.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="476.5" cy="371.0" r="8" fill="#5B9BFF"/>
+<path d="M473.0 371.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="567.5" cy="371.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 371.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="658.5" cy="371.0" r="7" fill="none" stroke="#F178B6" stroke-width="2"/>
+<path d="M658.5 364.0 a7 7 0 0 0 0 14 z" fill="#F178B6"/>
+<line x1="744.5" y1="371.0" x2="754.5" y2="371.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="835.5" y1="371.0" x2="845.5" y2="371.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="926.5" y1="371.0" x2="936.5" y2="371.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="371.0" x2="1027.5" y2="371.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1113.5" cy="371.0" r="8" fill="#A98BFF"/>
+<path d="M1110.0 371.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="60" y="418" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">05  Profile ← database</text>
+<text x="320" y="412" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #5</text>
+<text x="320" y="427" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 18</text>
+<circle cx="385.5" cy="413.0" r="8" fill="#E8825F"/>
+<path d="M382.0 413.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="476.5" cy="413.0" r="8" fill="#5B9BFF"/>
+<path d="M473.0 413.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="567.5" cy="413.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 413.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="653.5" y1="413.0" x2="663.5" y2="413.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="749.5" cy="413.0" r="8" fill="#3FCB7E"/>
+<path d="M746.0 413.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="835.5" y1="413.0" x2="845.5" y2="413.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="926.5" y1="413.0" x2="936.5" y2="413.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="413.0" x2="1027.5" y2="413.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1113.5" cy="413.0" r="8" fill="#A98BFF"/>
+<path d="M1110.0 413.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="41" y="434" width="1118" height="42" fill="#FFFFFF" fill-opacity="0.025"/>
+<text x="60" y="460" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">06  Date filter</text>
+<text x="320" y="454" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #6</text>
+<text x="320" y="469" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 18</text>
+<circle cx="385.5" cy="455.0" r="8" fill="#E8825F"/>
+<path d="M382.0 455.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="476.5" cy="455.0" r="8" fill="#5B9BFF"/>
+<path d="M473.0 455.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="567.5" cy="455.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 455.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="653.5" y1="455.0" x2="663.5" y2="455.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="749.5" cy="455.0" r="8" fill="#3FCB7E"/>
+<path d="M746.0 455.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="840.5" cy="455.0" r="7" fill="none" stroke="#3FCB7E" stroke-width="2"/>
+<path d="M840.5 448.0 a7 7 0 0 0 0 14 z" fill="#3FCB7E"/>
+<line x1="926.5" y1="455.0" x2="936.5" y2="455.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="455.0" x2="1027.5" y2="455.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1113.5" cy="455.0" r="8" fill="#A98BFF"/>
+<path d="M1110.0 455.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="60" y="502" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">07  Add expense</text>
+<text x="320" y="496" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #7</text>
+<text x="320" y="511" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 20</text>
+<circle cx="385.5" cy="497.0" r="8" fill="#E8825F"/>
+<path d="M382.0 497.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="476.5" cy="497.0" r="8" fill="#5B9BFF"/>
+<path d="M473.0 497.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="567.5" cy="497.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 497.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="653.5" y1="497.0" x2="663.5" y2="497.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="749.5" cy="497.0" r="8" fill="#3FCB7E"/>
+<path d="M746.0 497.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="840.5" cy="497.0" r="7" fill="none" stroke="#3FCB7E" stroke-width="2"/>
+<path d="M840.5 490.0 a7 7 0 0 0 0 14 z" fill="#3FCB7E"/>
+<line x1="926.5" y1="497.0" x2="936.5" y2="497.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="497.0" x2="1027.5" y2="497.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1113.5" cy="497.0" r="8" fill="#A98BFF"/>
+<path d="M1110.0 497.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="41" y="518" width="1118" height="42" fill="#FFFFFF" fill-opacity="0.025"/>
+<text x="60" y="544" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">08  Edit expense</text>
+<text x="320" y="538" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #9</text>
+<text x="320" y="553" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 23</text>
+<circle cx="385.5" cy="539.0" r="8" fill="#E8825F"/>
+<path d="M382.0 539.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="476.5" cy="539.0" r="8" fill="#5B9BFF"/>
+<path d="M473.0 539.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="567.5" cy="539.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 539.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="653.5" y1="539.0" x2="663.5" y2="539.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="749.5" cy="539.0" r="8" fill="#3FCB7E"/>
+<path d="M746.0 539.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="840.5" cy="539.0" r="7" fill="none" stroke="#3FCB7E" stroke-width="2"/>
+<path d="M840.5 532.0 a7 7 0 0 0 0 14 z" fill="#3FCB7E"/>
+<line x1="926.5" y1="539.0" x2="936.5" y2="539.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="539.0" x2="1027.5" y2="539.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1113.5" cy="539.0" r="8" fill="#A98BFF"/>
+<path d="M1110.0 539.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="60" y="586" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">09  Delete expense</text>
+<text x="320" y="580" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #12</text>
+<text x="320" y="595" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 23</text>
+<circle cx="385.5" cy="581.0" r="8" fill="#E8825F"/>
+<path d="M382.0 581.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="476.5" cy="581.0" r="8" fill="#5B9BFF"/>
+<path d="M473.0 581.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="567.5" cy="581.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 581.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="653.5" y1="581.0" x2="663.5" y2="581.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="749.5" cy="581.0" r="8" fill="#3FCB7E"/>
+<path d="M746.0 581.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="840.5" cy="581.0" r="7" fill="none" stroke="#3FCB7E" stroke-width="2"/>
+<path d="M840.5 574.0 a7 7 0 0 0 0 14 z" fill="#3FCB7E"/>
+<circle cx="931.5" cy="581.0" r="8" fill="#F2C14E"/>
+<path d="M928.0 581.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1022.5" cy="581.0" r="7" fill="none" stroke="#F178B6" stroke-width="2"/>
+<path d="M1022.5 574.0 a7 7 0 0 0 0 14 z" fill="#F178B6"/>
+<circle cx="1113.5" cy="581.0" r="8" fill="#A98BFF"/>
+<path d="M1110.0 581.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="41" y="602" width="1118" height="42" fill="#FFFFFF" fill-opacity="0.025"/>
+<text x="60" y="628" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#E8EDF7" text-anchor="start" letter-spacing="0" opacity="1">Technical README / docs</text>
+<text x="320" y="622" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11.5" font-weight="600" fill="#8D9AB8" text-anchor="end" letter-spacing="0" opacity="1">PR #8, #13</text>
+<text x="320" y="637" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#5A678A" text-anchor="end" letter-spacing="0" opacity="1">Nov 20–23</text>
+<circle cx="385.5" cy="623.0" r="8" fill="#E8825F"/>
+<path d="M382.0 623.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="471.5" y1="623.0" x2="481.5" y2="623.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="567.5" cy="623.0" r="8" fill="#2ED3C0"/>
+<path d="M564.0 623.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="653.5" y1="623.0" x2="663.5" y2="623.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="744.5" y1="623.0" x2="754.5" y2="623.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="835.5" y1="623.0" x2="845.5" y2="623.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="926.5" y1="623.0" x2="936.5" y2="623.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<line x1="1017.5" y1="623.0" x2="1027.5" y2="623.0" stroke="#5A678A" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<circle cx="1113.5" cy="623.0" r="8" fill="#A98BFF"/>
+<path d="M1110.0 623.0 l2.5 2.6 l4.6 -5" stroke="#0B1020" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="52" cy="696" r="7" fill="#3FCB7E"/>
+<text x="66" y="700" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#8D9AB8" text-anchor="start" letter-spacing="0" opacity="1">Confirmed by a file or commit in the repo</text>
+<circle cx="360" cy="696" r="6" fill="none" stroke="#3FCB7E" stroke-width="2"/>
+<path d="M360 690 a6 6 0 0 0 0 12 z" fill="#3FCB7E"/>
+<text x="374" y="700" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#8D9AB8" text-anchor="start" letter-spacing="0" opacity="1">Consistent with history (tool available, matching naming/format)</text>
+<line x1="840" y1="696" x2="850" y2="696" stroke="#5A678A" stroke-width="2" stroke-linecap="round"/>
+<text x="860" y="700" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#8D9AB8" text-anchor="start" letter-spacing="0" opacity="1">Not used / not yet introduced</text>
+</svg>

@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-label="Workflow evolution timeline">
+<title>Workflow evolution timeline</title>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0B1020"/><stop offset="1" stop-color="#121A33"/>
+  </linearGradient>
+  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+    <path d="M32 0H0V32" fill="none" stroke="#FFFFFF" stroke-opacity="0.035"/>
+  </pattern>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10z" fill="#8D9AB8"/>
+  </marker>
+  <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0L10 5L0 10z" fill="#F2C14E"/>
+  </marker>
+</defs>
+<rect width="1200" height="520" rx="18" fill="url(#bg)"/>
+<rect width="1200" height="520" rx="18" fill="url(#grid)"/>
+<rect x="0.5" y="0.5" width="1199" height="519" rx="18" fill="none" stroke="#2A3658"/>
+<text x="40" y="56" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#E8EDF7" text-anchor="start" letter-spacing="-0.3" opacity="1">How the workflow evolved in 3 weeks</text><text x="40" y="82" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8D9AB8" text-anchor="start" letter-spacing="0" opacity="1">I iterated on the process like a product, adding each capability when a real need appeared.</text>
+<line x1="70" y1="250" x2="1130" y2="250" stroke="#2A3658" stroke-width="3" stroke-linecap="round"/>
+<text x="1160" y="52" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#E8825F" text-anchor="end" letter-spacing="1.2" opacity="1">ABOVE THE LINE: TOOLING ADDED</text>
+<text x="1160" y="72" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#5B9BFF" text-anchor="end" letter-spacing="1.2" opacity="1">BELOW THE LINE: FEATURES SHIPPED</text>
+<line x1="110.0" y1="200" x2="110.0" y2="238" stroke="#E8825F" stroke-width="1.5" opacity="0.6"/>
+<line x1="110.0" y1="262" x2="110.0" y2="284" stroke="#5B9BFF" stroke-width="1.5" opacity="0.5"/>
+<circle cx="110.0" cy="250" r="10" fill="#0B1020" stroke="#E8825F" stroke-width="3"/>
+<circle cx="110.0" cy="250" r="4" fill="#E8825F"/>
+<rect x="40.0" y="140" width="140" height="58" rx="10" fill="#E8825F" fill-opacity="0.12" stroke="#E8825F" stroke-width="1"/>
+<text x="110.0" y="164" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#E8825F" text-anchor="middle" letter-spacing="0" opacity="1">Claude Code</text>
+<text x="110.0" y="182" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#E8825F" text-anchor="middle" letter-spacing="0" opacity="1">first commits</text>
+<text x="110.0" y="304" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Nov 3</text>
+<text x="110.0" y="328" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">Landing, Terms,</text>
+<text x="110.0" y="347" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">Privacy pages</text>
+<line x1="273.33333333333337" y1="200" x2="273.33333333333337" y2="238" stroke="#E8825F" stroke-width="1.5" opacity="0.6"/>
+<line x1="273.33333333333337" y1="262" x2="273.33333333333337" y2="284" stroke="#5B9BFF" stroke-width="1.5" opacity="0.5"/>
+<circle cx="273.33333333333337" cy="250" r="10" fill="#0B1020" stroke="#E8825F" stroke-width="3"/>
+<circle cx="273.33333333333337" cy="250" r="4" fill="#E8825F"/>
+<rect x="203.33333333333337" y="140" width="140" height="58" rx="10" fill="#E8825F" fill-opacity="0.12" stroke="#E8825F" stroke-width="1"/>
+<text x="273.33333333333337" y="164" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#E8825F" text-anchor="middle" letter-spacing="0" opacity="1">CLAUDE.md</text>
+<text x="273.33333333333337" y="182" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#E8825F" text-anchor="middle" letter-spacing="0" opacity="1">+ first spec</text>
+<text x="273.33333333333337" y="304" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Nov 9</text>
+<text x="273.33333333333337" y="328" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">#1 Database</text>
+<text x="273.33333333333337" y="347" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">setup</text>
+<line x1="436.6666666666667" y1="200" x2="436.6666666666667" y2="238" stroke="#E8825F" stroke-width="1.5" opacity="0.6"/>
+<line x1="436.6666666666667" y1="262" x2="436.6666666666667" y2="284" stroke="#5B9BFF" stroke-width="1.5" opacity="0.5"/>
+<circle cx="436.6666666666667" cy="250" r="10" fill="#0B1020" stroke="#E8825F" stroke-width="3"/>
+<circle cx="436.6666666666667" cy="250" r="4" fill="#E8825F"/>
+<rect x="366.6666666666667" y="140" width="140" height="58" rx="10" fill="#E8825F" fill-opacity="0.12" stroke="#E8825F" stroke-width="1"/>
+<text x="436.6666666666667" y="164" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#E8825F" text-anchor="middle" letter-spacing="0" opacity="1">Slash</text>
+<text x="436.6666666666667" y="182" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#E8825F" text-anchor="middle" letter-spacing="0" opacity="1">commands</text>
+<text x="436.6666666666667" y="304" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Nov 10</text>
+<text x="436.6666666666667" y="328" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">#2 Registration</text>
+<line x1="600.0" y1="200" x2="600.0" y2="238" stroke="#F178B6" stroke-width="1.5" opacity="0.6"/>
+<line x1="600.0" y1="262" x2="600.0" y2="284" stroke="#5B9BFF" stroke-width="1.5" opacity="0.5"/>
+<circle cx="600.0" cy="250" r="10" fill="#0B1020" stroke="#F178B6" stroke-width="3"/>
+<circle cx="600.0" cy="250" r="4" fill="#F178B6"/>
+<rect x="530.0" y="140" width="140" height="58" rx="10" fill="#F178B6" fill-opacity="0.12" stroke="#F178B6" stroke-width="1"/>
+<text x="600.0" y="164" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#F178B6" text-anchor="middle" letter-spacing="0" opacity="1">UI designer</text>
+<text x="600.0" y="182" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#F178B6" text-anchor="middle" letter-spacing="0" opacity="1">skill</text>
+<text x="600.0" y="304" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Nov 17</text>
+<text x="600.0" y="328" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">#3 Login/logout</text>
+<text x="600.0" y="347" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">#4 Profile page</text>
+<line x1="763.3333333333334" y1="200" x2="763.3333333333334" y2="238" stroke="#A98BFF" stroke-width="1.5" opacity="0.6"/>
+<line x1="763.3333333333334" y1="262" x2="763.3333333333334" y2="284" stroke="#5B9BFF" stroke-width="1.5" opacity="0.5"/>
+<circle cx="763.3333333333334" cy="250" r="10" fill="#0B1020" stroke="#A98BFF" stroke-width="3"/>
+<circle cx="763.3333333333334" cy="250" r="4" fill="#A98BFF"/>
+<rect x="693.3333333333334" y="158" width="140" height="40" rx="10" fill="#A98BFF" fill-opacity="0.12" stroke="#A98BFF" stroke-width="1"/>
+<text x="763.3333333333334" y="182" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#A98BFF" text-anchor="middle" letter-spacing="0" opacity="1">4 subagents</text>
+<text x="763.3333333333334" y="304" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Nov 18</text>
+<text x="763.3333333333334" y="328" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">#5 Profile ← DB</text>
+<text x="763.3333333333334" y="347" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">#6 Date filter</text>
+<line x1="926.6666666666667" y1="200" x2="926.6666666666667" y2="238" stroke="#2ED3C0" stroke-width="1.5" opacity="0.6"/>
+<line x1="926.6666666666667" y1="262" x2="926.6666666666667" y2="284" stroke="#5B9BFF" stroke-width="1.5" opacity="0.5"/>
+<circle cx="926.6666666666667" cy="250" r="10" fill="#0B1020" stroke="#2ED3C0" stroke-width="3"/>
+<circle cx="926.6666666666667" cy="250" r="4" fill="#2ED3C0"/>
+<rect x="856.6666666666667" y="158" width="140" height="40" rx="10" fill="#2ED3C0" fill-opacity="0.12" stroke="#2ED3C0" stroke-width="1"/>
+<text x="926.6666666666667" y="182" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#2ED3C0" text-anchor="middle" letter-spacing="0" opacity="1">Tech README</text>
+<text x="926.6666666666667" y="304" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Nov 20</text>
+<text x="926.6666666666667" y="328" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">#7 Add expense</text>
+<line x1="1090.0" y1="200" x2="1090.0" y2="238" stroke="#F2C14E" stroke-width="1.5" opacity="0.6"/>
+<line x1="1090.0" y1="262" x2="1090.0" y2="284" stroke="#5B9BFF" stroke-width="1.5" opacity="0.5"/>
+<circle cx="1090.0" cy="250" r="10" fill="#0B1020" stroke="#F2C14E" stroke-width="3"/>
+<circle cx="1090.0" cy="250" r="4" fill="#F2C14E"/>
+<rect x="1020.0" y="140" width="140" height="58" rx="10" fill="#F2C14E" fill-opacity="0.12" stroke="#F2C14E" stroke-width="1"/>
+<text x="1090.0" y="164" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#F2C14E" text-anchor="middle" letter-spacing="0" opacity="1">Hooks +</text>
+<text x="1090.0" y="182" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13" font-weight="700" fill="#F2C14E" text-anchor="middle" letter-spacing="0" opacity="1">/ship-feature</text>
+<text x="1090.0" y="304" font-family="'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Nov 23</text>
+<text x="1090.0" y="328" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">#9 Edit expense</text>
+<text x="1090.0" y="347" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">#12 Delete expense</text>
+<polygon points="40.0,430 306.0,430 320.0,454 306.0,478 40.0,478 40.0,454" fill="#5A678A" fill-opacity="0.1" stroke="#5A678A" stroke-opacity="0.5"/>
+<text x="180.0" y="459" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#8D9AB8" text-anchor="middle" letter-spacing="0" opacity="1">Ad-hoc prompting</text>
+<polygon points="320.0,430 586.0,430 600.0,454 586.0,478 320.0,478 334.0,454" fill="#5B9BFF" fill-opacity="0.17" stroke="#5B9BFF" stroke-opacity="0.5"/>
+<text x="460.0" y="459" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Rules + specs</text>
+<polygon points="600.0,430 866.0,430 880.0,454 866.0,478 600.0,478 614.0,454" fill="#E8825F" fill-opacity="0.24000000000000002" stroke="#E8825F" stroke-opacity="0.5"/>
+<text x="740.0" y="459" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Automated commands</text>
+<polygon points="880.0,430 1146.0,430 1160.0,454 1146.0,478 880.0,478 894.0,454" fill="#A98BFF" fill-opacity="0.31000000000000005" stroke="#A98BFF" stroke-opacity="0.5"/>
+<text x="1020.0" y="459" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#E8EDF7" text-anchor="middle" letter-spacing="0" opacity="1">Agents + guardrails</text>
+<text x="40" y="418" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#8D9AB8" text-anchor="start" letter-spacing="1.5" opacity="1">WORKFLOW MATURITY</text>
+</svg>
