@@ -149,6 +149,14 @@
 
 .profile-table tbody tr:hover { background: var(--paper-warm); }
 
+.profile-table-action {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.profile-table-action:hover { text-decoration: underline; }
+
 /* Category badges */
 .profile-badge {
     display: inline-block;

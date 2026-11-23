@@ -142,6 +142,40 @@ def insert_expense(user_id, amount, category, expense_date, description):
         conn.close()
 
 
+def get_expense_by_id(expense_id, user_id):
+    """Return the expense with this id if it belongs to user_id, otherwise None."""
+    conn = get_db()
+    try:
+        row = conn.execute(
+            """
+            SELECT id, amount, category, date, description FROM expenses
+            WHERE id = ? AND user_id = ?
+            """,
+            (expense_id, user_id),
+        ).fetchone()
+    finally:
+        conn.close()
+    return dict(row) if row else None
+
+
+def update_expense(expense_id, user_id, amount, category, expense_date, description):
+    """Update an expense owned by user_id. Return True if a row changed, False otherwise."""
+    conn = get_db()
+    try:
+        with conn:
+            cursor = conn.execute(
+                """
+                UPDATE expenses
+                SET amount = ?, category = ?, date = ?, description = ?
+                WHERE id = ? AND user_id = ?
+                """,
+                (amount, category, expense_date, description, expense_id, user_id),
+            )
+            return cursor.rowcount > 0
+    finally:
+        conn.close()
+
+
 def get_user_by_id(user_id):
     """Return name, email, initials and member_since for this user, or None if missing."""
     conn = get_db()
@@ -216,7 +250,7 @@ def get_recent_transactions(user_id, limit=10, *, start_date=None, end_date=None
     try:
         rows = conn.execute(
             """
-            SELECT date, description, category, amount FROM expenses
+            SELECT id, date, description, category, amount FROM expenses
             WHERE user_id = ?
               AND (? IS NULL OR date >= ?)
               AND (? IS NULL OR date <= ?)
