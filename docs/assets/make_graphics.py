@@ -94,7 +94,7 @@ def banner():
 def workflow():
     W, H = 1200, 660
     b = [header("Feature delivery pipeline",
-                "Every feature follows the same six stages, with one human approval gate before anything merges.")]
+                "Every feature follows the same six stages. Review findings wait for my approval before any fix is applied.")]
     stages = [
         ("01", "SPEC", "/create-spec", C["blue"], ["Clean-tree check", "Feature branch", "Definition of done"]),
         ("02", "PLAN", "Plan Mode", C["teal"], ["Explore subagent", "Plan reviewed first", "No code written yet"]),
